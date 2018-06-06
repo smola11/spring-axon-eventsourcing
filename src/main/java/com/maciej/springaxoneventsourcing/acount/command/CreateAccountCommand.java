@@ -1,16 +1,14 @@
 package com.maciej.springaxoneventsourcing.acount.command;
 
-import org.axonframework.commandhandling.TargetAggregateIdentifier;
+import com.maciej.springaxoneventsourcing.BaseCommand;
 
-public class CreateAccountCommand {
+public class CreateAccountCommand extends BaseCommand<String> {
 
     public CreateAccountCommand(String id, String accountCreator) {
-        this.id = id;
+        super(id);
         this.accountCreator = accountCreator;
     }
 
-    @TargetAggregateIdentifier
-    public final String id; // BankAccount id;
     public final String accountCreator;
 
 

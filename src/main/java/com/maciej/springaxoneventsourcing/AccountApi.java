@@ -1,5 +1,6 @@
 package com.maciej.springaxoneventsourcing;
 
+import com.maciej.springaxoneventsourcing.acount.BankAccount;
 import com.maciej.springaxoneventsourcing.acount.command.CloseAccountCommand;
 import com.maciej.springaxoneventsourcing.acount.command.CreateAccountCommand;
 import com.maciej.springaxoneventsourcing.acount.command.DepositMoneyCommand;

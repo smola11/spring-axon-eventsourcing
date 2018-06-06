@@ -1,16 +1,14 @@
 package com.maciej.springaxoneventsourcing.acount.command;
 
-import org.axonframework.commandhandling.TargetAggregateIdentifier;
+import com.maciej.springaxoneventsourcing.BaseCommand;
 
-public class DepositMoneyCommand {
+public class DepositMoneyCommand extends BaseCommand<String> {
 
     public DepositMoneyCommand(String id, double amount) {
-        this.id = id;
+        super(id);
         this.amount = amount;
     }
 
-    @TargetAggregateIdentifier
-    public final String id;
     public final double amount;
 
 }

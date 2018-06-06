@@ -1,14 +1,10 @@
 package com.maciej.springaxoneventsourcing.acount.command;
 
-import org.axonframework.commandhandling.TargetAggregateIdentifier;
+import com.maciej.springaxoneventsourcing.BaseCommand;
 
-public class CloseAccountCommand {
+public class CloseAccountCommand extends BaseCommand<String> {
 
     public CloseAccountCommand(String id) {
-        this.id = id;
+        super(id);
     }
-
-    @TargetAggregateIdentifier
-    public final String id;
-
 }

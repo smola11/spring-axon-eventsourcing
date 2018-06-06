@@ -1,15 +1,13 @@
 package com.maciej.springaxoneventsourcing.acount.command;
 
-import org.axonframework.commandhandling.TargetAggregateIdentifier;
+import com.maciej.springaxoneventsourcing.BaseCommand;
 
-public class WithdrawMoneyCommand {
+public class WithdrawMoneyCommand extends BaseCommand<String> {
 
     public WithdrawMoneyCommand(String id, double amount) {
-        this.id = id;
+        super(id);
         this.amount = amount;
     }
 
-    @TargetAggregateIdentifier
-    public final String id;
     public final double amount;
 }
