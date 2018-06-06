@@ -1,9 +1,10 @@
 package com.maciej.springaxoneventsourcing.acount.event;
 
-public class AccountClosedEvent {
+import com.maciej.springaxoneventsourcing.BaseEvent;
+
+public class AccountClosedEvent extends BaseEvent<String> {
     public AccountClosedEvent(String id) {
-        this.id = id;
+        super(id);
     }
 
-    public final String id;
 }

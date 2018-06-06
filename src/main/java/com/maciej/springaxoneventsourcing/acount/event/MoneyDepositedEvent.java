@@ -1,12 +1,13 @@
 package com.maciej.springaxoneventsourcing.acount.event;
 
-public class MoneyDepositedEvent {
+import com.maciej.springaxoneventsourcing.BaseEvent;
+
+public class MoneyDepositedEvent extends BaseEvent<String> {
 
     public MoneyDepositedEvent(String id, double amount) {
-        this.id = id;
+        super(id);
         this.amount = amount;
     }
 
-    public final String id;
     public final double amount;
 }

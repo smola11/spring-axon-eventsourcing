@@ -1,14 +1,15 @@
 package com.maciej.springaxoneventsourcing.acount.event;
 
-public class AccountCreatedEvent {
+import com.maciej.springaxoneventsourcing.BaseEvent;
+
+public class AccountCreatedEvent extends BaseEvent<String> {
 
     public AccountCreatedEvent(String id, String accountCreator, double balance) {
-        this.id = id;
+        super(id);
         this.accountCreator = accountCreator;
         this.balance = balance;
     }
 
-    public final String id;
     public final String accountCreator;
     public final double balance;
 

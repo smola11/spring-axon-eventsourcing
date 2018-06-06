@@ -7,20 +7,30 @@ import com.maciej.springaxoneventsourcing.acount.command.DepositMoneyCommand;
 import com.maciej.springaxoneventsourcing.acount.command.WithdrawMoneyCommand;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.axonframework.commandhandling.model.AggregateNotFoundException;
+import org.axonframework.eventsourcing.eventstore.EventStore;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
+import java.util.stream.Collectors;
 
 @RequestMapping("/accounts")
 @RestController
 public class AccountApi {
 
     private final CommandGateway commandGateway;
+    private final EventStore eventStore;
 
-    public AccountApi(CommandGateway commandGateway) {
+    public AccountApi(CommandGateway commandGateway, EventStore eventStore) {
         this.commandGateway = commandGateway;
+        this.eventStore = eventStore;
+    }
+
+    @GetMapping("{id}/events")
+    public List<Object> getEvents(@PathVariable String id) {
+        return eventStore.readEvents(id).asStream().map(s -> s.getPayload()).collect(Collectors.toList());
     }
 
     @PostMapping
